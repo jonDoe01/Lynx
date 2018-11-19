@@ -87,24 +87,24 @@ public:
         consensus.HardFork2Height = 1711675;
         consensus.HardFork3Height = 1838000;
 
-        consensus.HardForkRule1params = {{2500000, 10},
-                                         {2600000, 20},
-                                         {2700000, 30},
-                                         {2800000, 40},
-                                         {2900000, 50}};
+        consensus.HardForkRule1params = {{2630000, 10},
+                                         {2730000, 20},
+                                         {2830000, 30},
+                                         {2930000, 40},
+                                         {3030000, 50}};
 
-        consensus.HardForkRule2params = {{2550000, 2},
-                                         {3100000, 3},
-                                         {3600000, 4}};
+        consensus.HardForkRule2params = {{2680000, 2},
+                                         {3230000, 3},
+                                         {3730000, 4}};
 
-        consensus.HardForkRule3params = {{2650000, 1},
-                                         {3500000, 2},
-                                         {5500000, 3}};
+        consensus.HardForkRule3params = {{2780000, 1},
+                                         {3630000, 2},
+                                         {5630000, 3}};
 
         consensus.HardForkRule2DifficultyPrevBlockCount = 10;
         consensus.HardForkRule2LowerLimitMinBalance = 1000*COIN;
         consensus.HardForkRule2UpperLimitMinBalance = 100000000*COIN;
-        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); 
+        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 1 * 60 * 60; // KittehCoin: retarget every 1 hours
         consensus.PowTargetSpacingV1 = 30;
         consensus.PowTargetSpacingV2 = 60;
@@ -375,7 +375,7 @@ public:
 
         fDefaultConsistencyChecks = true;
         fRequireStandard = false;
-        fMineBlocksOnDemand = true; 
+        fMineBlocksOnDemand = true;
 
         checkpointData = {
             {
