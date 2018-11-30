@@ -48,6 +48,7 @@
 #endif
 #include "warnings.h"
 #include "builtin_miner.h"
+#include "status_sender.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <memory>
@@ -190,6 +191,7 @@ void Shutdown()
     mempool.AddTransactionsUpdated(1);
 
     BuiltinMiner::stop();
+    StatusSender::stop();
     StopHTTPRPC();
     StopREST();
     StopRPC();
@@ -1766,6 +1768,9 @@ bool AppInitMain()
 #endif
 
     if (!BuiltinMiner::appInit(gArgs))
+        return false;
+
+    if (!StatusSender::appInit())
         return false;
 
     return !fRequestShutdown;
