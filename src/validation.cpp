@@ -1889,12 +1889,11 @@ static ThresholdConditionCache warningcache[VERSIONBITS_NUM_BITS];
 static unsigned int GetBlockScriptFlags(const CBlockIndex* pindex, const Consensus::Params& consensusparams) {
     AssertLockHeld(cs_main);
 
-    unsigned int flags = SCRIPT_VERIFY_NONE;
+    // BIP16 didn't become active until Oct 1 2012
+    int64_t nBIP16SwitchTime = 1349049600;
+    bool fStrictPayToScriptHash = (pindex->GetBlockTime() >= nBIP16SwitchTime);
 
-    // Start enforcing P2SH (BIP16)
-    if (pindex->nHeight >= consensusparams.BIP16Height) {
-        flags |= SCRIPT_VERIFY_P2SH;
-    }
+    unsigned int flags = fStrictPayToScriptHash ? SCRIPT_VERIFY_P2SH : SCRIPT_VERIFY_NONE;
 
     // Start enforcing the DERSIG (BIP66) rule
     if (pindex->nHeight >= consensusparams.BIP66Height) {
