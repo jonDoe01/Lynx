@@ -8,6 +8,7 @@
 #include <primitives/transaction.h>
 #include <script/interpreter.h>
 #include <consensus/validation.h>
+#include <chainparams.h>
 
 // TODO remove the following dependencies
 #include <chain.h>
@@ -220,10 +221,13 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
         assert(!coin.IsSpent());
 
         // If prev is coinbase, check that it's matured
-        if (coin.IsCoinBase() && nSpendHeight - coin.nHeight < COINBASE_MATURITY) {
-            return state.Invalid(false,
-                REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
-                strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
+        if (coin.IsCoinBase()) {
+            int coinbaseMaturity = ::Params().GetConsensus().GetCoinbaseMaturity(coin.nHeight);
+            if (nSpendHeight - coin.nHeight < coinbaseMaturity) {
+                return state.Invalid(false,
+                    REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
+                    strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
+            }
         }
 
         // Check for negative or overflow input values
