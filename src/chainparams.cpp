@@ -205,9 +205,9 @@ public:
         consensus.BIP34Hash = uint256S("8075c771ed8b495ffd943980a95f702ab34fce3c8c54e379548bda33cc8c0573");
         consensus.BIP65Height = 76; // 8075c771ed8b495ffd943980a95f702ab34fce3c8c54e379548bda33cc8c0573
         consensus.BIP66Height = 76; // 8075c771ed8b495ffd943980a95f702ab34fce3c8c54e379548bda33cc8c0573
-        consensus.HardForkHeight = 100;
-        consensus.HardFork2Height = 200;
-        consensus.HardFork3Height = 300;
+        consensus.HardForkHeight = 1;
+        consensus.HardFork2Height = 2;
+        consensus.HardFork3Height = 3;
 
         consensus.HardForkRule1params = {{250, 10},
                                          {260, 20},
@@ -220,17 +220,16 @@ public:
                                          {360, 4}};
 
         consensus.HardForkRule3params = {{265, 1},
-                                         {350, 2},
-                                         {550, 3}};
+                                         {350, 2}};
 
         consensus.HardForkRule2DifficultyPrevBlockCount = 10;
-        consensus.HardForkRule2LowerLimitMinBalance = 1*COIN;
+        consensus.HardForkRule2LowerLimitMinBalance = 0.001*COIN;
         consensus.HardForkRule2UpperLimitMinBalance = 100000000*COIN;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 1 * 60 * 60; // // KittehCoin: retarget every 1 hours
-        consensus.PowTargetSpacingV1 = 60;
+        consensus.PowTargetSpacingV1 = 30;
         consensus.PowTargetSpacingV2 = 60;
-        consensus.PowTargetSpacingV3 = 60;
+        consensus.PowTargetSpacingV3 = 30;
         consensus.CoinbaseMaturity = TESTNET_COINBASE_MATURITY;
         consensus.CoinbaseMaturity2 = TESTNET_COINBASE_MATURITY;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -248,8 +247,8 @@ public:
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1483228800; // January 1, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1517356801; // January 31st, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 0;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 999999999999ULL;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000000000000010000");
