@@ -153,9 +153,11 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0xc2adb964220f170f6c4fe9002f0db19a6f9c9608f6f765ba0629ac3897028de5"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        vSeeds.emplace_back("blendedhealing.com", false);
-        vSeeds.emplace_back("blendedhealing.net", false);
-        vSeeds.emplace_back("blendedhealing.org", false);
+        vSeeds.emplace_back("node01.getlynx.io", false);
+        vSeeds.emplace_back("node02.getlynx.io", false);
+        vSeeds.emplace_back("node03.getlynx.io", false);
+        vSeeds.emplace_back("node04.getlynx.io", false);
+        vSeeds.emplace_back("node05.getlynx.io", false);
 
         //vSeeds.emplace_back("seed-a.litecoin.loshan.co.uk", true);
         //vSeeds.emplace_back("dnsseed.thrasher.io", true);
@@ -219,8 +221,7 @@ public:
                                          {310, 3},
                                          {360, 4}};
 
-        consensus.HardForkRule3params = {{265, 1},
-                                         {350, 2}};
+        consensus.HardForkRule3params = {{265, 1}};
 
         consensus.HardForkRule2DifficultyPrevBlockCount = 10;
         consensus.HardForkRule2LowerLimitMinBalance = 0.001*COIN;
@@ -271,7 +272,6 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.push_back("logware.us");
         //vSeeds.emplace_back("testnet-seed.litecointools.com", true);
         //vSeeds.emplace_back("seed-b.litecoin.loshan.co.uk", true);
         //vSeeds.emplace_back("dnsseed-testnet.thrasher.io", true);
