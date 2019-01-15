@@ -226,7 +226,7 @@ public:
         consensus.HardForkRule2DifficultyPrevBlockCount = 10;
         consensus.HardForkRule2LowerLimitMinBalance = 0.001*COIN;
         consensus.HardForkRule2UpperLimitMinBalance = 100000000*COIN;
-        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 1 * 60 * 60; // // KittehCoin: retarget every 1 hours
         consensus.PowTargetSpacingV1 = 30;
         consensus.PowTargetSpacingV2 = 60;
