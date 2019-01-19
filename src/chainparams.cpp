@@ -153,11 +153,11 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0xc2adb964220f170f6c4fe9002f0db19a6f9c9608f6f765ba0629ac3897028de5"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        vSeeds.emplace_back("node01.getlynx.io", false);
-        vSeeds.emplace_back("node02.getlynx.io", false);
-        vSeeds.emplace_back("node03.getlynx.io", false);
-        vSeeds.emplace_back("node04.getlynx.io", false);
-        vSeeds.emplace_back("node05.getlynx.io", false);
+        vSeeds.emplace_back("node01.getlynx.io");
+        vSeeds.emplace_back("node02.getlynx.io");
+        vSeeds.emplace_back("node03.getlynx.io");
+        vSeeds.emplace_back("node04.getlynx.io");
+        vSeeds.emplace_back("node05.getlynx.io");
 
         //vSeeds.emplace_back("seed-a.litecoin.loshan.co.uk", true);
         //vSeeds.emplace_back("dnsseed.thrasher.io", true);
