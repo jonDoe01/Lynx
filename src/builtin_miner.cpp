@@ -86,13 +86,12 @@ namespace
 
     std::vector<std::string> getMinerAddresses()
     {
-        std::string mineraddress_cfg = gArgs.GetArg("-mineraddress", std::string());
         std::vector<std::string> addresses;
-        boost::split(addresses, mineraddress_cfg, boost::is_any_of(",\t "));
-        auto new_end = std::remove_if(addresses.begin(), addresses.end(),
-                                      std::mem_fn(&std::string::empty));
-        addresses.erase(new_end, addresses.end());
-
+        if (!gArgs.IsArgSet("-mineraddress"))
+                return addresses;
+        for (const std::string& address : gArgs.GetArgs("-mineraddress")) {
+            addresses.push_back(address);
+        }
         return addresses;
     }
 
