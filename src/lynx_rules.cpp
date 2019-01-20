@@ -1,4 +1,6 @@
 #include <algorithm>
+#include <random>
+#include <chrono>
 #include <cmath>
 #include <vector>
 #include <set>
@@ -137,7 +139,13 @@ static bool GetRandomValidAddressForMining(const std::vector<std::string>& addre
     if (address_candidates.empty())
         return false;
 
-    auto randomIndex = static_cast<size_t>(rand()) % address_candidates.size();
+    // obtain a time-based seed:
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine e{ seed };
+    std::uniform_int_distribution<int> dist(0, address_candidates.size() - 1);
+    int randomIndex = dist(e);
+
+    //auto randomIndex = static_cast<size_t>(rand()) % address_candidates.size();
     CBitcoinAddress cur_address(address_candidates[randomIndex]);
     if (!cur_address.IsValid())
     {
